@@ -28,6 +28,7 @@ class Board (object):
             self.size = board.size
             self.winner = board.winner 
             self.draw = board.draw 
+
     @property
     def BOARD (self):
         BOARD = [[' ']* self.size for x in range(0, self.size) ]
@@ -39,6 +40,7 @@ class Board (object):
     def show(self):
         for element in self.BOARD:
             print "|"+"|".join(element)+"|"
+
     @property
     def check_ending ( self ):   
         if check_winning ( self.player0_moves, self.winning_boards ):
@@ -54,6 +56,7 @@ class Board (object):
                       return False
             self.draw = True
             return True
+
     @property
     def leaf_value ( self ):                                 
          if self.winner == "human":   
@@ -64,12 +67,14 @@ class Board (object):
             return 0
          else:
             print "this is not a terminal board"
+
     def get_unique_list (self,  a_list ):
         unique_list = []
         for element in a_list:
             if element not in unique_list:
                unique_list.append (element)
         return unique_list
+
     def get_winning_boards (self):
         #computes the triples of winning positions of any size board
         winning = []
@@ -93,6 +98,7 @@ class Board (object):
         return self.get_unique_list(winning)
 #        return set(winning)
       #  return set(winning)
+
     @property
     def winning_boards (self):
         return self.get_winning_boards()
@@ -191,6 +197,7 @@ def minimax ( a_board, depth ):
 
     if depth == 0:
        return the_right_move
+
     return value 
 
 def get_possible_boards ( a_board ):
